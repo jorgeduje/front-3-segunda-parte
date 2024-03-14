@@ -1,12 +1,12 @@
-import Cat from "./Components/Cat"
-import Dog from "./Components/Dog"
+import LoginForm from "./Components/LoginForm"
 
 function App() {
-
+  const handleClick =() => {
+    //Todo el envio del form
+  }
   return (
    <h1>
-    {/* <Dog/> */}
-    <Cat/>
+      <LoginForm handleClick={handleClick}/>
    </h1>
   )
 }
