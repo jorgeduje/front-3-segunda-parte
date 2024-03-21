@@ -3,28 +3,13 @@ import { Home } from "./components/pages/Home";
 import { Favorites } from "./components/pages/Favorites";
 import { Layout } from "./components/layout/Layout";
 import { Detail } from "./components/pages/Detail";
-import ParentComponent from "./Clase 13/ParentComponent";
-import LoboEstepario from "./Clase 13/LoboEstepario";
-import EjemploContext from "./Context/EjemploContext";
+
 import Cart from "./components/pages/Cart";
 import ProductContext from "./Context/ProductContext";
 
 function App() {
   return (
     <BrowserRouter>
-      {/* <EjemploContext>
-        <ParentComponent sal={15000}>
-          <h1>Hola, soy el contenido de parent</h1>
-          <p>Texto ejemplo</p>
-        </ParentComponent>
-
-        <ParentComponent>
-          <h3>Este es otro titulo de ejemplo</h3>
-          <p>Otra cosa</p>
-        </ParentComponent>
-        <LoboEstepario/>
-      </EjemploContext> */}
-
       <ProductContext>
         <Routes>
           <Route element={<Layout />}>

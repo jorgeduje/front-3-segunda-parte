@@ -7,7 +7,10 @@ import { useProductStates } from "../../Context/ProductContext";
 export const Detail = () => {
   const { id } = useParams();
   const [productSelected, setProductSelected] = useState({});
-  const {favs, setFavs, setCart} = useProductStates()
+  
+  const {state, dispatch} = useProductStates()
+ console.log( state )
+
   useEffect(() => {
  
     const getData = async()=>{
@@ -24,8 +27,11 @@ export const Detail = () => {
       <h1>Titulo : {productSelected.title}</h1>
       <h1>Precio : {productSelected.price}</h1>
       <h1>descripcion : {productSelected.description}</h1>
-      <button onClick={() => setFavs([...favs, productSelected])}>⭐</button>
-      <button onClick={() => setCart((prev) => [...prev, productSelected])}>🛒</button>
+      <button onClick={()=> dispatch( {type:"ADD_FAVORITES", payload: productSelected } )}>⭐</button>
+      {/* <button onClick={()=> sumar(10)}>⭐</button> */}
+      {/* <button onClick={sumar}>⭐</button> */}
+      <button>🛒</button>
     </div>
   );
 };
+

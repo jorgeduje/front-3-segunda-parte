@@ -1,21 +1,44 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useReducer } from "react";
 
-const ProductStates = createContext()
+const ProductStates = createContext();
 
-const ProductContext = ({children}) => {
-    //Estados globales
-    const [favs, setFavs] = useState([])
-    const [cart, setCart] = useState([])
-    console.log(favs, cart)
+let initialState = {
+  favs: [], //
+  cart: [],
+  darkMode: false, // true // false // true // false
+};
 
-    //Aca van las funciones globales
-    return(
-        <ProductStates.Provider value={{favs, setFavs, cart, setCart}}>
-            {children}
-        </ProductStates.Provider>
-    )
-}
+const productsReducer = (state, action) => {
+  // {type: a}
 
-export default ProductContext
+  switch (action.type) {
+    case "ADD_FAVORITES":
+      return { ...state, favs: [...state.favs, action.payload] };
+    case "REMOVE_BY_ID":
+      let newArr = state.favs.filter(
+        (product) => product.id !== action.payload
+      )
+      return { ...state, favs: newArr };
+    case "REMOVE_ALL":
+      return { ...state, favs: [] };
+    case "CHANGE_MODE":
+      return { ...state, darkMode: !state.darkMode };
+    default:
+      return state;
+  }
+};
 
-export const useProductStates = () => useContext(ProductStates)
+const ProductContext = ({ children }) => {
+  //Estados globales
+  const [state, dispatch] = useReducer(productsReducer, initialState);
+
+  //Aca van las funciones globales
+  let data = { state, dispatch };
+  return (
+    <ProductStates.Provider value={data}>{children}</ProductStates.Provider>
+  );
+};
+
+export default ProductContext;
+
+export const useProductStates = () => useContext(ProductStates);
