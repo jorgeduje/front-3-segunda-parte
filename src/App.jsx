@@ -1,18 +1,17 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Home } from "./Components/pages/Home";
-import { Favorites } from "./Components/pages/Favorites";
-import { Layout } from "./Components/layout/Layout";
-import { Detail } from "./Components/pages/Detail";
+import { Home } from "./components/pages/Home";
+import { Favorites } from "./components/pages/Favorites";
+import { Layout } from "./components/layout/Layout";
+import { Detail } from "./components/pages/Detail";
 import ParentComponent from "./Clase 13/ParentComponent";
 import LoboEstepario from "./Clase 13/LoboEstepario";
 import EjemploContext from "./Context/EjemploContext";
-import Cart from "./Components/pages/Cart";
+import Cart from "./components/pages/Cart";
 import ProductContext from "./Context/ProductContext";
 
 function App() {
   return (
     <BrowserRouter>
-
       {/* <EjemploContext>
         <ParentComponent sal={15000}>
           <h1>Hola, soy el contenido de parent</h1>
@@ -32,9 +31,9 @@ function App() {
             <Route path="/" element={<Home />} />
 
             <Route path="/favorites" element={<Favorites />} />
-            
-            <Route path="/detalle/:id" element={<Detail />}/> 
-            <Route path="/carrito" element={<Cart/>}/>
+
+            <Route path="/detalle/:id" element={<Detail />} />
+            <Route path="/carrito" element={<Cart />} />
           </Route>
 
           <Route path="*" element={<h1>404 not found</h1>} />

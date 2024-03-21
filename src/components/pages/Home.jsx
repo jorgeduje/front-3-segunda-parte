@@ -7,11 +7,6 @@ import { getProducts } from "../../api/products";
 export const Home = () => {
   const [products, setProducts] = useState([]);
 
-  // useEffect(() => {
-  //     axios.get("https://fakestoreapi.com/products")
-  //     .then((res) => setProducts(res.data));
-
-  // }, []);
 
   useEffect(() => {
 
