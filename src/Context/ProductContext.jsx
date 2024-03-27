@@ -1,9 +1,10 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
 
 const ProductStates = createContext();
+const lsFavs = JSON.parse(localStorage.getItem('favs'))
 
 let initialState = {
-  favs: [], //
+  favs: lsFavs || [], //
   cart: [],
   darkMode: false, // true // false // true // false
 };
@@ -15,9 +16,7 @@ const productsReducer = (state, action) => {
     case "ADD_FAVORITES":
       return { ...state, favs: [...state.favs, action.payload] };
     case "REMOVE_BY_ID":
-      let newArr = state.favs.filter(
-        (product) => product.id !== action.payload
-      )
+      let newArr = state.favs.filter((product) => product.id !== action.payload)
       return { ...state, favs: newArr };
     case "REMOVE_ALL":
       return { ...state, favs: [] };
@@ -34,6 +33,11 @@ const ProductContext = ({ children }) => {
 
   //Aca van las funciones globales
   let data = { state, dispatch };
+
+  useEffect(() => {
+    localStorage.setItem('favs', JSON.stringify(state.favs))
+  }, [state.favs])
+
   return (
     <ProductStates.Provider value={data}>{children}</ProductStates.Provider>
   );
