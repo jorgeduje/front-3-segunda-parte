@@ -6,20 +6,21 @@ import { Detail } from "./components/pages/Detail";
 
 import Cart from "./components/pages/Cart";
 import ProductContext from "./Context/ProductContext";
+import { Comments } from "./Comments";
+import { Users } from "./Users";
+import { Todos } from "./Todos";
 
 function App() {
   return (
     <BrowserRouter>
       <ProductContext>
         <Routes>
-          <Route element={<Layout />}>
-            <Route path="/" element={<Home />} />
+          <Route path="/" element={<Comments />} />
 
-            <Route path="/favorites" element={<Favorites />} />
+          <Route path="/favorites" element={<Favorites />} />
 
-            <Route path="/detalle/:id" element={<Detail />} />
-            <Route path="/carrito" element={<Cart />} />
-          </Route>
+          <Route path="/detalle/:id" element={<Detail />} />
+          <Route path="/carrito" element={<Cart />} />
 
           <Route path="*" element={<h1>404 not found</h1>} />
         </Routes>
