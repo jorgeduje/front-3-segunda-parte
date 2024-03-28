@@ -6,24 +6,27 @@ import { Detail } from "./components/pages/Detail";
 
 import Cart from "./components/pages/Cart";
 import ProductContext from "./Context/ProductContext";
+import HomeMaterial from "./components/material/HomeMaterial";
+import { ProbandoComponentes } from "./components/material/ProbandoComponentes";
+import { ThemeProvider } from "@emotion/react";
+import { customTheme } from "./themeConfig";
 
 function App() {
   return (
     <BrowserRouter>
-      <ProductContext>
-        <Routes>
-          <Route element={<Layout />}>
-            <Route path="/" element={<Home />} />
+      <ThemeProvider theme={customTheme}>
+        <ProductContext>
+          <Routes>
+            <Route path="/" element={<ProbandoComponentes />} />
 
             <Route path="/favorites" element={<Favorites />} />
 
             <Route path="/detalle/:id" element={<Detail />} />
-            <Route path="/carrito" element={<Cart />} />
-          </Route>
 
-          <Route path="*" element={<h1>404 not found</h1>} />
-        </Routes>
-      </ProductContext>
+            <Route path="*" element={<h1>404 not found</h1>} />
+          </Routes>
+        </ProductContext>
+      </ThemeProvider>
     </BrowserRouter>
   );
 }
