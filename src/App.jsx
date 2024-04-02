@@ -10,6 +10,7 @@ import HomeMaterial from "./components/material/HomeMaterial";
 import { ProbandoComponentes } from "./components/material/ProbandoComponentes";
 import { ThemeProvider } from "@emotion/react";
 import { customTheme } from "./themeConfig";
+import Register from "./components/pages/Register";
 
 function App() {
   return (
@@ -17,13 +18,7 @@ function App() {
       <ThemeProvider theme={customTheme}>
         <ProductContext>
           <Routes>
-            <Route path="/" element={<ProbandoComponentes />} />
-
-            <Route path="/favorites" element={<Favorites />} />
-
-            <Route path="/detalle/:id" element={<Detail />} />
-
-            <Route path="*" element={<h1>404 not found</h1>} />
+            <Route path="/" element={<Register />} />
           </Routes>
         </ProductContext>
       </ThemeProvider>
