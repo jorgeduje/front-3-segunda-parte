@@ -1,5 +1,6 @@
 // todos los productos
 
+let x = "password"
 import axios from "axios";
 
 export const getProducts = async () => {
