@@ -1,6 +1,6 @@
 // todos los productos
 
-let x = "password"
+let x = import.meta.env.VITE_BANCO
 import axios from "axios";
 
 export const getProducts = async () => {
